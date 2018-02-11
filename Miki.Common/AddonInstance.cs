@@ -26,7 +26,7 @@ namespace Miki.Common
 
         public virtual EventAccessibility GetUserAccessibility(IDiscordMessage e) => throw new NotImplementedException();
 
-        public virtual IEnumerable<Module> GetModules() => throw new NotImplementedException();
+        public virtual IEnumerable<IModule> GetModules() => throw new NotImplementedException();
 
         public virtual Task<string> GetIdentifierAsync(ulong id) => throw new NotImplementedException();
 

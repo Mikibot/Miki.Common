@@ -56,4 +56,25 @@ namespace Miki.Common.Interfaces
 
         Task ModifyMessage(IDiscordMessage message);
     }
+
+	public interface IEmbedAuthor
+	{
+		string Name { get; set; }
+		string IconUrl { get; set; }
+		string Url { get; set; }
+	}
+
+	public interface IEmbedField
+	{
+		string Name { get; set; }
+		string Value { get; set; }
+
+		bool IsInline { get; set; }
+	}
+
+	public interface IEmbedFooter
+	{
+		string IconUrl { get; set; }
+		string Text { get; set; }
+	}
 }

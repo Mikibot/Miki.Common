@@ -19,9 +19,6 @@ namespace Miki.Common.Interfaces
         Task<IDiscordMessage> SendMessageAsync(string message);
 		Task QueueMessageAsync(string message);
 
-        [Obsolete("Use 'IDiscordEmbed.SendToChannel' instead")]
-        Task<IDiscordMessage> SendMessage(IDiscordEmbed embed);
-
         Task SendTypingAsync();
     }
 }

@@ -4,53 +4,51 @@ using System.Threading.Tasks;
 
 namespace Miki.Common.Interfaces
 {
-    public interface IDiscordUser : IDiscordEntity, IMentionable
+    public interface IDiscordUser : IDiscordEntity
     {
         string AvatarUrl { get; }
 
-        bool IsBot { get; }
+		DateTimeOffset CreatedAt { get; }
 
-        string Discriminator { get; }
+		string Discriminator { get; }
 
-        IDiscordAudioChannel VoiceChannel { get; }
+		IDiscordGuild Guild { get; }
 
-        int Hierarchy { get; }
+		int Hierarchy { get; }
 
-        IDiscordGuild Guild { get; }
+		bool IsBot { get; }
 
-        DateTimeOffset CreatedAt { get; }
-        DateTimeOffset? JoinedAt { get; }
+		DateTimeOffset? JoinedAt { get; }
 
-        List<ulong> RoleIds { get; }
+		string Mention { get; }
+
+		string Nickname { get; }
+
+		List<ulong> RoleIds { get; }
 
         string Username { get; }
-        string Nickname { get; }
-
-        bool HasPermissions(IDiscordChannel channel, params DiscordGuildPermission[] permissions);
 
         Task AddRoleAsync(IDiscordRole role);
-
         Task AddRolesAsync(List<IDiscordRole> roles);
 
         Task Ban(IDiscordGuild guild, int pruneDays = 0, string reason = "");
 
-        Task Kick(string reason = "");
-
         string GetAvatarUrl(DiscordAvatarType type = DiscordAvatarType.PNG, ushort size = 128);
-        string GetName();
 
-        Task RemoveRoleAsync(IDiscordRole role);
+		string GetName();
 
+		bool HasPermissions(IDiscordChannel channel, params DiscordGuildPermission[] permissions);
+
+		Task Kick(string reason = "");
+
+		Task QueueMessageAsync(string text);
+
+		Task RemoveRoleAsync(IDiscordRole role);
         Task RemoveRolesAsync(List<IDiscordRole> roles);
 
         Task SendFile(string path);
 
         Task<IDiscordMessage> SendMessage(string text);
-
-		[Obsolete("Use IDiscordEmbed.SendToUser instead")]
-        Task<IDiscordMessage> SendMessage(IDiscordEmbed embed);
-
-		Task QueueMessageAsync(string text);
 
         Task SetNickname(string text);
 

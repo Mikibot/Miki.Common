@@ -14,7 +14,6 @@ namespace Miki.Common.Interfaces
         IDiscordClient Discord { get; }
 
         IDiscordMessageChannel Channel { get; }
-        IDiscordAudioChannel VoiceChannel { get; }
 
         IDiscordGuild Guild { get; }
 

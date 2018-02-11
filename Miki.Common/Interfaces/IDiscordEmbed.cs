@@ -45,14 +45,14 @@ namespace Miki.Common.Interfaces
         Task<IDiscordMessage> SendToChannel(ulong channelId);
         Task<IDiscordMessage> SendToChannel(IDiscordMessageChannel channel);
 
-		Task QueueToChannel(ulong channelId);
-		Task QueueToChannel(IDiscordMessageChannel channel);
+		void QueueToChannel(ulong channelId);
+		void QueueToChannel(IDiscordMessageChannel channel);
 
         Task<IDiscordMessage> SendToUser(ulong userId);
         Task<IDiscordMessage> SendToUser(IDiscordUser user);
 
-		Task QueueToUser(ulong userId);
-		Task QueueToUser(IDiscordUser user);
+		void QueueToUser(ulong userId);
+		void QueueToUser(IDiscordUser user);
 
         Task ModifyMessage(IDiscordMessage message);
     }

@@ -13,11 +13,12 @@ namespace Miki.Common.Interfaces
 
         Task<List<IDiscordMessage>> GetMessagesAsync(int amount = 100);
 
-        Task<IDiscordMessage> SendFileAsync(string path);
+		void QueueMessageAsync(string message);
+
+		Task<IDiscordMessage> SendFileAsync(string path);
         Task<IDiscordMessage> SendFileAsync(MemoryStream stream, string extension);
 
         Task<IDiscordMessage> SendMessageAsync(string message);
-		Task QueueMessageAsync(string message);
 
         Task SendTypingAsync();
     }

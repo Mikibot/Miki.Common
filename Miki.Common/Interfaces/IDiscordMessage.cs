@@ -30,8 +30,7 @@ namespace Miki.Common.Interfaces
 
         Task DeleteAsync();
 
-        Task ModifyAsync(string message);
-        Task ModifyAsync(IDiscordEmbed embed);
+        void Modify(string message, IDiscordEmbed embed);
 
         Task PinAsync();
 

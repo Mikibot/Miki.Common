@@ -1,12 +1,18 @@
 ﻿using Miki.Common.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Miki.Common.Events
 {
     public interface ICommandHandler
     {
+		List<ICommandEvent> Commands { get; }
+
         bool IsPrivate { get; set; }
-        bool ShouldBeDisposed { get; set; }
+
+		List<IModule> Modules { get; }
+
+		bool ShouldBeDisposed { get; set; }
 
         ulong Owner { get; set; }
 
@@ -20,9 +26,7 @@ namespace Miki.Common.Events
 
         ICommandEvent GetCommandEvent(string id);
 
-        IEvent GetEvent(string id);
-
-        IModule GetModule(string id);
+		IModule GetModule(string id);
 
 		Task<string> GetPrefixAsync(ulong id);
 

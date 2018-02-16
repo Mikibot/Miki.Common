@@ -4,6 +4,6 @@ namespace Miki.Common
 {
     public interface IAddon
     {
-        Task<IAddonInstance> Create(IAddonInstance i);
+        IAddonInstance Create(IAddonInstance i);
     }
 }

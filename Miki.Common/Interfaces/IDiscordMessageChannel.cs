@@ -15,10 +15,10 @@ namespace Miki.Common.Interfaces
 
 		void QueueMessageAsync(string message);
 
-		Task<IDiscordMessage> SendFileAsync(string path);
-        Task<IDiscordMessage> SendFileAsync(MemoryStream stream, string extension);
+		Task<IDiscordMessage> SendFileAsync(string path, string message = null);
+        Task<IDiscordMessage> SendFileAsync(MemoryStream stream, string message = null);
 
-        Task<IDiscordMessage> SendMessageAsync(string message);
+        Task<IDiscordMessage> SendMessageAsync(string message, IDiscordEmbed embed = null);
 
         Task SendTypingAsync();
     }

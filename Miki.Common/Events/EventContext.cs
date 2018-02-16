@@ -7,16 +7,21 @@ namespace Miki.Common.Events
     {
         public string arguments;
 
-        // public IBot bot;
-        public ICommandHandler commandHandler;
+		public IBot bot;
+
+		public ICommandHandler commandHandler;
 
         public IDiscordMessage message;
 
         public IDiscordUser Author => message.Author;
-        public async Task<IDiscordUser> GetCurrentUserAsync() 
-			=> await Guild.GetCurrentUserAsync();
 
         public IDiscordMessageChannel Channel => message.Channel;
-        public IDiscordGuild Guild => message.Guild;
-    }
+
+		public IDiscordGuild Guild => message.Guild;
+
+		public IEventSystem EventSystem;
+
+		public async Task<IDiscordUser> GetCurrentUserAsync()
+			=> await Guild.GetCurrentUserAsync();
+	}
 }

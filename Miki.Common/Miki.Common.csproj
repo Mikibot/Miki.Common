@@ -6,4 +6,10 @@
     <RootNamespace>Miki.Common</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Miki.Framework">
+      <HintPath>..\..\Miki.Framework\Miki.Framework\bin\Debug\netcoreapp2.0\Miki.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

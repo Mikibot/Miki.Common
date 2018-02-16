@@ -27,8 +27,8 @@ namespace Miki.Common
 
         Task SetEnabled(ulong id, bool value);
 
-        Task InstallAsync(object bot);
+        void Install(object bot);
 
-        Task UninstallAsync(object bot);
+        void Uninstall(object bot);
     }
 }

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Miki.Common.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
-namespace Miki.Common.Interfaces
+namespace Miki.Common
 {
     public interface IDiscordUser : IDiscordEntity
     {
@@ -29,7 +31,7 @@ namespace Miki.Common.Interfaces
         string Username { get; }
 
         Task AddRoleAsync(IDiscordRole role);
-        Task AddRolesAsync(List<IDiscordRole> roles);
+        Task AddRolesAsync(params IDiscordRole[] roles);
 
         Task Ban(IDiscordGuild guild, int pruneDays = 0, string reason = "");
 
@@ -41,19 +43,43 @@ namespace Miki.Common.Interfaces
 
 		Task Kick(string reason = "");
 
-		Task QueueMessageAsync(string text);
+		Task QueueMessageAsync(string text, IDiscordEmbed embed = null);
 
 		Task RemoveRoleAsync(IDiscordRole role);
         Task RemoveRolesAsync(List<IDiscordRole> roles);
 
-        Task SendFile(string path);
+        Task SendFileAsync(string path);
 
-        Task<IDiscordMessage> SendMessage(string text);
+        Task<IDiscordMessage> SendMessageAsync(string text, IDiscordEmbed embed = null);
 
-        Task SetNickname(string text);
+        Task SetNicknameAsync(string text);
 
         Task Unban(IDiscordGuild guild);
     }
+
+	public interface IDiscordSelfUser : IDiscordUser
+	{
+		Task ModifyAsync(Action<SelfUserData> modifiedData);
+	}
+
+	public class SelfUserData
+	{
+		public string Username;
+		public DiscordImage? Image;
+	}
+
+	public struct DiscordImage
+	{
+		private Stream stream;
+
+		public DiscordImage(Stream stream)
+		{
+			this.stream = stream;
+		}
+
+		public Stream Stream 
+			=> stream;
+	}
 
     public enum DiscordAvatarType
     {

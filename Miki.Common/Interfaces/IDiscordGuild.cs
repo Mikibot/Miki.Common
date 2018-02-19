@@ -6,25 +6,32 @@ namespace Miki.Common.Interfaces
     public interface IDiscordGuild : IDiscordEntity
     {
         string AvatarUrl { get; }
+
         string Name { get; }
 
 		ulong OwnerId { get; }
 
-		Task<int> GetChannelCountAsync();
-		Task<int> GetVoiceChannelCountAsync();
-		Task<int> GetUserCountAsync();
+		List<IDiscordRole> Roles { get; }
 
-		Task<IDiscordUser> GetOwnerAsync();
+		Task<int> GetChannelCountAsync();
+
+		Task<List<IDiscordMessageChannel>> GetChannelsAsync();
+
 		Task<IDiscordUser> GetCurrentUserAsync();
 
-        List<IDiscordRole> Roles { get; }
+		Task<IDiscordMessageChannel> GetDefaultChannelAsync();
 
-        Task<IDiscordUser> GetUserAsync(ulong user_id);
+		Task<IDiscordUser> GetOwnerAsync();
 
-        Task<List<IDiscordMessageChannel>> GetChannels();
+		IDiscordRole GetRole(ulong role_id);
 
-        Task<IDiscordMessageChannel> GetDefaultChannel();
+		Task<IDiscordUser> GetUserAsync(ulong user_id);
+		Task<IDiscordUser> GetUserAsync(string username);
 
-        IDiscordRole GetRole(ulong role_id);
+		Task<List<IDiscordUser>> GetUsersAsync();
+
+		Task<int> GetUserCountAsync();
+
+		Task<int> GetVoiceChannelCountAsync();
     }
 }

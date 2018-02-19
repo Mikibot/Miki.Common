@@ -24,7 +24,7 @@ namespace Miki.Common.Extensions
             }
             foreach (ulong id in message.MentionedChannelIds)
             {
-                content = content.Replace($"<#{id.ToString()}>", message.Guild.GetChannels().GetAwaiter().GetResult().Find(c => { return c.Id == id; }).Name);
+                content = content.Replace($"<#{id.ToString()}>", message.Guild.GetChannelsAsync().GetAwaiter().GetResult().Find(c => { return c.Id == id; }).Name);
             }
             return content;
         }

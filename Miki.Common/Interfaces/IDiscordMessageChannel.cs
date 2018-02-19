@@ -16,7 +16,7 @@ namespace Miki.Common.Interfaces
 		void QueueMessageAsync(string message);
 
 		Task<IDiscordMessage> SendFileAsync(string path, string message = null);
-        Task<IDiscordMessage> SendFileAsync(MemoryStream stream, string message = null);
+        Task<IDiscordMessage> SendFileAsync(Stream stream, string fileName, string message = null);
 
         Task<IDiscordMessage> SendMessageAsync(string message, IDiscordEmbed embed = null);
 

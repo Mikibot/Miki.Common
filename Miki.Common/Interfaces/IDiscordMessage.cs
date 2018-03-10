@@ -4,36 +4,42 @@ using System.Threading.Tasks;
 
 namespace Miki.Common.Interfaces
 {
-    public interface IDiscordMessage : IDiscordEntity
-    {
-        IReadOnlyCollection<IDiscordAttachment> Attachments { get; }
+	public interface IDiscordMessage : IDiscordEntity
+	{
+		IReadOnlyCollection<IDiscordAttachment> Attachments { get; }
 
-        IDiscordUser Author { get; }
-        IDiscordUser Bot { get; }
+		IDiscordUser Author { get; }
+		IDiscordUser Bot { get; }
 
-        IDiscordClient Discord { get; }
+		IDiscordClient Discord { get; }
 
-        IDiscordMessageChannel Channel { get; }
+		IDiscordMessageChannel Channel { get; }
 
-        IDiscordGuild Guild { get; }
+		IDiscordGuild Guild { get; }
 
-        Dictionary<DiscordEmoji, DiscordReactionMetadata> Reactions { get; }
+		Dictionary<DiscordEmoji, DiscordReactionMetadata> Reactions { get; }
 
-        string Content { get; }
+		string Content { get; }
 		string ResolvedContent { get; }
 
-        DateTimeOffset Timestamp { get; }
+		DateTimeOffset Timestamp { get; }
 
-        IReadOnlyCollection<ulong> MentionedUserIds { get; }
-        IReadOnlyCollection<ulong> MentionedRoleIds { get; }
-        IReadOnlyCollection<ulong> MentionedChannelIds { get; }
+		IReadOnlyCollection<ulong> MentionedUserIds { get; }
+		IReadOnlyCollection<ulong> MentionedRoleIds { get; }
+		IReadOnlyCollection<ulong> MentionedChannelIds { get; }
 
-        Task DeleteAsync();
+		Task AddReactionAsync(string emoji);
 
-        void Modify(string message, IDiscordEmbed embed);
+		Task DeleteAsync();
 
-        Task PinAsync();
+		Task<IReadOnlyList<IDiscordUser>> GetReactionUsersAsync(DiscordEmoji emoji, int limit = 100, ulong? afterUserId = null);
 
-        Task UnpinAsync();
-    }
+		void Modify(string message, IDiscordEmbed embed);
+
+		Task PinAsync();
+
+		Task RemoveReactionAsync(string emoji, IDiscordUser user);
+
+		Task UnpinAsync();
+	}
 }

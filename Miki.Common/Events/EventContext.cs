@@ -5,7 +5,7 @@ namespace Miki.Common.Events
 {
     public class EventContext
     {
-        public string arguments;
+		public Args Arguments;
 
 		public IBot bot;
 

@@ -2,8 +2,6 @@
 
 namespace Miki.Common
 {
-    public delegate void LoadEvents(IBot bot);
-
 	public class ClientInformation
 	{
 		public string Name { get; set; } = "IABot";
@@ -16,7 +14,5 @@ namespace Miki.Common
 
 		public string DatabaseProvider { get; set;} = "";
 		public string DatabaseConnectionString { get; set; } = "";
-
-		public LoadEvents EventLoaderMethod { get; set; }
     }
 }
